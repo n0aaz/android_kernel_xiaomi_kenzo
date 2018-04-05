@@ -229,8 +229,6 @@ config ARCH_MSM
 	select DEVFREQ_GOV_MSM_BW_HWMON
 	select DEVFREQ_GOV_MSM_CACHE_HWMON
 	select DEVFREQ_SIMPLE_DEV
-	select ARM_MEMLAT_MON
-	select DEVFREQ_GOV_MEMLAT
 	help
 	  This enables support for the ARMv8 based Qualcomm chipsets.
 
@@ -585,6 +583,22 @@ config SECCOMP
 	  and the task is only allowed to execute a few safe syscalls
 	  defined by each seccomp mode.
 
+config HARDEN_BRANCH_PREDICTOR
+	bool "Harden the branch predictor against aliasing attacks" if EXPERT
+	default y
+	help
+	  Speculation attacks against some high-performance processors rely on
+	  being able to manipulate the branch predictor for a victim context by
+	  executing aliasing branches in the attacker context.  Such attacks
+	  can be partially mitigated against by clearing internal branch
+	  predictor state and limiting the prediction logic in some situations.
+
+	  This config option will take CPU-specific actions to harden the
+	  branch predictor against aliasing attacks and may rely on specific
+	  instruction sequences or control bits being set by the system
+	  firmware.
+
+	  If unsure, say Y.
 
 endmenu
 
