@@ -381,12 +381,18 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-maybe-u
 		   -g0 -DNDEBUG -fmodulo-sched -fivopts \
 		   -fmodulo-sched-allow-regmoves \
 		   -fno-asynchronous-unwind-tables \
+		   -mpc-relative-literal-loads \
+		   -mcpu=cortex-a72.cortex-a53+crc+crypto \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
 		   -Wno-deprecated-declarations \
-		   -Wno-cpp \
-		   -std=gnu89 \
-		   -Wno-array-bounds \
+		   -Wno-misleading-indentation \
+		   -Wno-unused-const-variable \
+		   -Wno-shift-overflow \
+		   -Wno-bool-compare \
+		   -Wno-memset-transposed-args \
+		   -Wno-discarded-array-qualifiers -std=gnu89 \
+		   -Wno-tautological-compare -Wno-array-bounds \
 		   -Wno-nonnull
 
 KBUILD_AFLAGS_KERNEL :=
